@@ -27,7 +27,24 @@ def login(driver):
 
     wait.until(EC.url_contains("/inventory.html"))
 
-driver = configuracion()
-login(driver)
-time.sleep(5)
-driver.quit()
+def contador_de_productos(driver):
+    productos = driver.find_elements(By.CLASS_NAME, "inventory_item")
+    return len(productos)
+
+def añadir_carrito(driver):
+    driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+
+def entrar_carrito(driver):
+    driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+
+
+# driver = configuracion()
+# login(driver)
+# contador_de_productos(driver)
+# añadir_carrito(driver)
+# entrar_carrito(driver)
+
+
+
+# time.sleep(2)
+# driver.quit()
