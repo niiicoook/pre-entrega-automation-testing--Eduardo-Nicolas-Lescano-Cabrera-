@@ -28,6 +28,10 @@ def login(driver):
     wait.until(EC.url_contains("/inventory.html"))
 
 def contador_de_productos(driver):
+
+    wait = WebDriverWait(driver, 10)
+    wait.until(EC.presence_of_element_located((By.CLASS_NAME, "title")))
+
     productos = driver.find_elements(By.CLASS_NAME, "inventory_item")
     return len(productos)
 
@@ -38,11 +42,11 @@ def entrar_carrito(driver):
     driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
 
 
-# driver = configuracion()
-# login(driver)
-# contador_de_productos(driver)
-# añadir_carrito(driver)
-# entrar_carrito(driver)
+driver = configuracion()
+login(driver)
+contador_de_productos(driver)
+añadir_carrito(driver)
+entrar_carrito(driver)
 
 
 
